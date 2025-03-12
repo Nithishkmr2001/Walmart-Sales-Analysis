@@ -1,4 +1,3 @@
-# Walmart-Sales-Analysis
 # Walmart Sales Analysis: SQL + Python Project
 
 ## Overview
@@ -28,7 +27,7 @@ This project provides an end-to-end data analysis solution for extracting busine
 #### Install Dependencies:
 
 ```sh
-pip install pandas numpy sqlalchemy pymysql
+pip install pandas  sqlalchemy pymysql
 ```
 
 #### Load Data:
@@ -80,7 +79,7 @@ df.head()
   ```
 - Save cleaned data:
   ```python
-  df.to_csv('Walmart_cleanData.csv', index=False)
+  df.to_csv()
   ```
 
 ### 8. Data Ingestion into MySQL & PostgreSQL
@@ -98,7 +97,7 @@ con = engine.connect()
 #### Insert Data into MySQL:
 
 ```python
-df.to_sql(name='Walmart', con=engine, if_exists="append", index=False)
+df.to_sql()
 ```
 
 ### 9. SQL Analysis & Business Insights
@@ -106,45 +105,15 @@ df.to_sql(name='Walmart', con=engine, if_exists="append", index=False)
 #### Key Queries:
 
 1. **Revenue Trends by Top 10 Branches & Categories**
-   ```sql
-   SELECT branch, category, CONCAT("$", FORMAT(SUM(total), 2)) AS revenue
-   FROM Walmart
-   GROUP BY branch, category
-   ORDER BY SUM(total) DESC
-   LIMIT 10;
-   ```
-2. **Best-Selling Product Categories**
-   ```sql
-   SELECT category, FORMAT(SUM(quantity), 0) AS total_units_sold
-   FROM Walmart
-   GROUP BY category
-   ORDER BY total_units_sold DESC
-   LIMIT 10;
-   ```
-3. **Top 5 Average Order Value (AOV) by Branch**
-   ```sql
-   SELECT branch, CONCAT("$", ROUND(AVG(total), 2)) AS average_order_value
-   FROM Walmart
-   GROUP BY branch
-   ORDER BY average_order_value DESC
-   LIMIT 5;
-   ```
-4. **Top 5 Performing Cities by Sales**
-   ```sql
-   SELECT city, CONCAT("$", FORMAT(SUM(total), 2)) AS total_revenue
-   FROM Walmart
-   GROUP BY city
-   ORDER BY SUM(total) DESC
-   LIMIT 5;
-   ```
-5. **Total Revenue by Payment Method**
-   ```sql
-   SELECT payment_method, CONCAT("$", FORMAT(SUM(total), 2)) AS total_revenue
-   FROM Walmart
-   GROUP BY payment_method
-   ORDER BY SUM(total) DESC;
-   ```
 
+2. **Best-Selling Product Categories**
+   
+3. **Top 5 Average Order Value (AOV) by Branch**
+   
+4. **Top 5 Performing Cities by Sales**
+  
+5. **Total Revenue by Payment Method**
+  
 ### 10. Project Documentation & Publishing
 
 #### Documentation:
